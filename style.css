@@ -1,91 +1,182 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: rgb(0, 0, 0);
-  margin: 0;
-  padding: 0;
-  color: white;
+  font-family: "Segoe UI", sans-serif; /* Mengatur jenis huruf ke Segoe UI */
+  margin: 0; /* Menghilangkan margin bawaan browser */
+  padding: 0; /* Menghilangkan padding bawaan browser */
+  color: white; /* Warna teks default menjadi putih */
+  background-image: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5"); /* Menampilkan gambar latar belakang */
+  background-size: cover; /* Membuat gambar menutupi seluruh layar */
+  background-position: center; /* Menempatkan gambar di tengah */
+  background-repeat: no-repeat; /* Mencegah gambar mengulang */
+}
+
+body::before {
+  content: ""; /* Membuat elemen kosong sebagai overlay */
+  position: fixed; /* Posisi tetap agar menutupi seluruh layar */
+  top: 0; /* Mulai dari atas */
+  left: 0; /* Mulai dari kiri */
+  width: 100%; /* Lebar penuh */
+  height: 100%; /* Tinggi penuh */
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay hitam semi-transparan */
+  z-index: -1; /* Ditempatkan di bawah semua elemen */
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  display: flex; /* Menggunakan flexbox */
+  justify-content: center; /* Menengahkan secara horizontal */
+  align-items: center; /* Menengahkan secara vertikal */
+  min-height: 100vh; /* Tinggi minimum layar penuh */
+  padding: 20px; /* Ruang di dalam */
 }
 
 .card {
-  background: rgba(0, 204, 7, 0.63);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
+  background: rgba(0, 204, 7, 0.63); /* Warna latar transparan hijau */
+  padding: 30px; /* Ruang dalam */
+  border-radius: 16px; /* Membuat sudut bulat */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Efek bayangan lembut */
+  width: 100%; /* Mengisi lebar penuh container */
+  max-width: 500px; /* Maksimum lebar 500px */
 }
 
 .card h2 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: white;
+  text-align: center; /* Teks rata tengah */
+  margin-bottom: 24px; /* Jarak bawah judul */
+  color: white; /* Warna teks putih */
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 16px; /* Jarak antar kelompok form */
 }
 
 label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: white;
+  display: block; /* Tampilkan label sebagai blok */
+  margin-bottom: 6px; /* Jarak bawah label */
+  font-weight: 600; /* Membuat teks tebal */
+  color: white; /* Warna label putih */
 }
 
 input[type="text"],
 textarea,
 select,
 input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
-  transition: 0.2s;
+  width: 100%; /* Mengisi lebar penuh */
+  padding: 10px; /* Ruang dalam */
+  border-radius: 8px; /* Sudut membulat */
+  border: 1px solid #ccc; /* Garis abu-abu terang */
+  box-sizing: border-box; /* Menghitung padding & border dalam lebar */
+  font-size: 14px; /* Ukuran teks input */
+  background-color: #fff; /* Warna latar putih */
+  color: black; /* Warna teks hitam */
+  transition: 0.2s; /* Animasi halus saat berubah */
+  pointer-events: auto; /* Input bisa diklik */
+  cursor: pointer; /* Kursor berubah jadi tangan */
 }
 
 input[type="radio"] {
-  accent-color: rgba(0, 255, 26, 0.48);
+  accent-color: limegreen; /* Warna lingkaran radio */
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: rgba(0, 255, 26, 0.48);
-  outline: none;
+  border-color: limegreen; /* Warna garis fokus menjadi hijau */
+  outline: none; /* Menghapus garis biru default */
 }
 
 textarea {
-  resize: vertical;
+  resize: vertical; /* Textarea bisa diubah tinggi saja */
 }
 
 .radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: flex; /* Gunakan flexbox */
+  flex-direction: column; /* Disusun ke bawah */
+  gap: 6px; /* Jarak antar radio button */
 }
 
 button {
-  width: 100%;
-  background-color: rgba(0, 255, 26, 0.48);
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+  width: 100%; /* Tombol selebar form */
+  background-color: limegreen; /* Warna latar tombol hijau */
+  color: black; /* Warna teks tombol hitam */
+  border: none; /* Tanpa garis tepi */
+  padding: 12px; /* Ruang dalam */
+  font-size: 16px; /* Ukuran teks tombol */
+  border-radius: 10px; /* Sudut bulat */
+  cursor: pointer; /* Tanda tangan saat hover */
+  transition: 0.3s; /* Efek halus saat hover */
 }
 
 button:hover {
-  background-color: rgba(0, 179, 45, 0.19);
+  background-color: #45d945; /* Warna hijau lebih gelap saat hover */
+}
+
+/* Popup Modal Overlay */
+.popup-overlay {
+  position: fixed; /* Posisi tetap di layar */
+  top: 0;
+  left: 0;
+  width: 100%; /* Lebar penuh */
+  height: 100%; /* Tinggi penuh */
+  background: rgba(0, 0, 0, 0.6); /* Latar hitam transparan */
+  display: none; /* Disembunyikan awalnya */
+  justify-content: center; /* Tengah horizontal */
+  align-items: center; /* Tengah vertikal */
+  z-index: 999; /* Di atas semua elemen */
+}
+
+/* Konten di dalam popup */
+.popup-content {
+  background: #1e1e2f; /* Warna gelap */
+  color: white; /* Teks putih */
+  padding: 20px 30px; /* Ruang dalam */
+  border-radius: 12px; /* Sudut membulat */
+  width: 90%; /* Lebar relatif */
+  max-width: 400px; /* Maksimum lebar */
+  box-shadow: 0 0 20px rgba(17, 255, 0, 0.63); /* Bayangan kehijauan */
+  text-align: left; /* Teks rata kiri */
+}
+
+.popup-content h3 {
+  margin-top: 0; /* Tidak ada margin atas */
+  margin-bottom: 16px; /* Jarak bawah judul */
+  text-align: center; /* Judul rata tengah */
+  color: rgba(0, 204, 7, 0.63); /* Warna hijau transparan */
+}
+
+.popup-content pre {
+  white-space: pre-wrap; /* Teks bisa pindah baris otomatis */
+  font-family: "Segoe UI", sans-serif; /* Jenis huruf */
+}
+
+.popup-content button {
+  margin-top: 20px; /* Jarak atas tombol */
+  width: 100%; /* Tombol selebar kontainer */
+  background-color: rgba(0, 204, 7, 0.63); /* Warna hijau transparan */
+  border: none; /* Tanpa garis tepi */
+  padding: 10px; /* Ruang dalam */
+  font-size: 15px; /* Ukuran teks */
+  border-radius: 8px; /* Sudut membulat */
+  cursor: pointer; /* Kursor tangan */
+  color: #000; /* Warna teks hitam */
+}
+
+.popup-content button:hover {
+  background-color: #45d945; /* Warna saat hover */
+}
+
+/* Media Query: Untuk tampilan HP (lebar <= 600px) */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px; /* Lebih ramping di HP */
+    max-width: 100%; /* Lebar penuh di layar kecil */
+  }
+
+  .popup-content {
+    padding: 15px; /* Popup lebih ramping di HP */
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 15px; /* Teks lebih besar di HP */
+  }
 }

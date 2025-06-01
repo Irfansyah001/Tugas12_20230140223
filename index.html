@@ -1,62 +1,72 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOM Javascript</title>
-  <link rel="stylesheet" href="style.css" />
+<!DOCTYPE html> <!-- Menentukan dokumen ini sebagai HTML5 -->
+<html lang="id"> <!-- Membuka elemen HTML, dan menyatakan bahwa bahasa utama adalah Bahasa Indonesia -->
+<head> <!-- Bagian head berisi metadata dan link -->
+  <meta charset="UTF-8" /> <!-- Mengatur karakter encoding menjadi UTF-8 (standar global) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Agar tampilan responsif di perangkat mobile -->
+  <title>DOM Javascript</title> <!-- Judul halaman yang muncul di tab browser -->
+  <link rel="stylesheet" href="style.css" /> <!-- Menghubungkan file CSS eksternal bernama style.css -->
 </head>
-<body>
-  <div class="container">
-    <div class="card">
-      <h2>(Pendaftaran Peminatan)</h2>
-      <form onsubmit="kirimData(); return false;">
-        <div class="form-group">
-          <label for="nama">Nama lengkap:</label>
-          <input type="text" id="nama" placeholder="Nama lengkap" required>
+<body> <!-- Membuka bagian utama yang ditampilkan ke pengguna -->
+  <div class="container"> <!-- Elemen pembungkus utama dengan class "container" -->
+    <div class="card"> <!-- Elemen kartu/formulir utama dengan gaya seperti kartu -->
+      <h2>Pendaftaran Peminatan</h2> <!-- Judul formulir -->
+      <form onsubmit="kirimData(); return false;"> <!-- Formulir yang memanggil fungsi kirimData() saat disubmit dan mencegah reload -->
+        <div class="form-group"> <!-- Grup untuk input nama -->
+          <label for="nama">Nama lengkap:</label> <!-- Label untuk input nama -->
+          <input type="text" id="nama" placeholder="Nama lengkap" required> <!-- Input teks untuk nama, wajib diisi -->
         </div>
 
-        <div class="form-group">
-          <label for="nim">NIM:</label>
-          <input type="text" id="nim" placeholder="NIM Anda" required>
+        <div class="form-group"> <!-- Grup untuk input NIM -->
+          <label for="nim">NIM:</label> <!-- Label untuk NIM -->
+          <input type="text" id="nim" placeholder="NIM Anda" required> <!-- Input teks untuk NIM, wajib diisi -->
         </div>
 
-        <div class="form-group">
-          <label>Peminatan:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="peminatan" value="Programming"> Programming</label>
-            <label><input type="radio" name="peminatan" value="Desain"> Desain</label>
-            <label><input type="radio" name="peminatan" value="Jaringan"> Jaringan</label>
-            <label><input type="radio" name="peminatan" value="Data"> Data</label>
+        <div class="form-group"> <!-- Grup untuk pilihan peminatan -->
+          <label>Peminatan:</label> <!-- Label umum untuk kelompok radio button -->
+          <div class="radio-group"> <!-- Grup khusus untuk radio button -->
+            <label><input type="radio" name="peminatan" value="Programming"> Programming</label> <!-- Opsi peminatan Programming -->
+            <label><input type="radio" name="peminatan" value="Desain"> Desain</label> <!-- Opsi peminatan Desain -->
+            <label><input type="radio" name="peminatan" value="Jaringan"> Jaringan</label> <!-- Opsi peminatan Jaringan -->
+            <label><input type="radio" name="peminatan" value="Data"> Data</label> <!-- Opsi peminatan Data -->
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="alamat">Alamat:</label>
-          <textarea id="alamat" placeholder="Masukkan alamat lengkap..." rows="3" required></textarea>
+        <div class="form-group"> <!-- Grup untuk input alamat -->
+          <label for="alamat">Alamat:</label> <!-- Label untuk alamat -->
+          <textarea id="alamat" placeholder="Masukkan alamat lengkap..." rows="3" required></textarea> <!-- Textarea untuk input alamat, wajib diisi -->
         </div>
 
-        <div class="form-group">
-          <label for="angkatan">Angkatan:</label>
-          <select id="angkatan" required>
-            <option value="">-- Pilih Angkatan: --</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
+        <div class="form-group"> <!-- Grup untuk dropdown angkatan -->
+          <label for="angkatan">Angkatan:</label> <!-- Label untuk angkatan -->
+          <select id="angkatan" required> <!-- Dropdown pilihan angkatan, wajib dipilih -->
+            <option value="">-- Pilih Angkatan: --</option> <!-- Opsi kosong sebagai placeholder -->
+            <option value="2020">2020</option> <!-- Opsi angkatan 2020 -->
+            <option value="2021">2021</option> <!-- Opsi angkatan 2021 -->
+            <option value="2022">2022</option> <!-- Opsi angkatan 2022 -->
+            <option value="2023">2023</option> <!-- Opsi angkatan 2023 -->
+            <option value="2024">2024</option> <!-- Opsi angkatan 2024 -->
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="tanggal">Tanggal Pendaftaran:</label>
-          <input type="date" id="tanggal" required>
+        <div class="form-group"> <!-- Grup untuk input tanggal -->
+          <label for="tanggal">Tanggal Pendaftaran:</label> <!-- Label untuk tanggal -->
+          <input type="date" id="tanggal" required> <!-- Input khusus untuk memilih tanggal, wajib diisi -->
         </div>
 
-        <button type="submit">Kirim</button>
+        <button type="submit">Kirim</button> <!-- Tombol untuk mengirim form -->
       </form>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Popup Modal -->
+  <div id="popup" class="popup-overlay"> <!-- Modal overlay yang muncul saat data dikirim -->
+    <div class="popup-content"> <!-- Konten dari modal popup -->
+      <h3>Data Pendaftaran</h3> <!-- Judul di dalam popup -->
+      <pre id="popup-text"></pre> <!-- Tempat untuk menampilkan data yang dikirim -->
+      <button onclick="tutupPopup()">Tutup</button> <!-- Tombol untuk menutup popup -->
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- Menyisipkan file JavaScript eksternal -->
 </body>
 </html>
